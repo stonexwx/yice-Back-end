@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.org.qsmx.yice_admin.mapper.ArticleMapper">
+
+    <resultMap id="BaseResultMap" type="cn.org.qsmx.yice_admin.domain.Article">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="adminId" column="admin_id" jdbcType="BIGINT"/>
+            <result property="url" column="url" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="addtime" column="addtime" jdbcType="TIMESTAMP"/>
+            <result property="type" column="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,admin_id,url,
+        content,title,addtime
+    </sql>
+    <select id="ArticleMapperConfig" resultType="cn.org.qsmx.yice_admin.domain.Article">
+        SELECT * FROM article
+                          ${ew.customSqlSegment}
+    </select>
+
+</mapper>
